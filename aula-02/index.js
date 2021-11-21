@@ -1,62 +1,73 @@
-function obterUsuario(callback) {
-    setTimeout(function () {
-        return callback(null, {
+function obterUsuario(){
+    //Quando der algum problema -> reject(ERRO)
+    // quando success -> RESOLV
+    return new Promise(function reslvePromise(resolve,reject){
+        setTimeout(() => {
+        return resolve({
             id: 1,
-            nome: 'Gabriel',
-            dataNascimento: new Date()
+            nome: "Aladin",
+            dataNascimento: new Date(),
+            endereco: "Castelo no meio do deserto da Arábia"
         })
+        
+        
     }, 1000)
+    })
+  
 }
 
-function obterTelefone(idUsuario, callback) {
-    setTimeout(function () {
-        return callback(null, {
-            telefone: '119707070',
-            ddd: 11
+function obterTelefone(idUsuario, callback){
+    setTimeout(()=>{
+        return callback(null,{
+                numero: '99999900',
+                ddd:66
+           })
+        
+    },2000)
+}
+
+function obterEndereco(idUsuario, callback){
+    setTimeout(()=>{
+        return callback(null,{
+            rua: "dos bobos",
+            numero:0
         })
-    }, 2000)
+    },2000)
 }
 
-function obterEndereco(idUsuario, callback) {
-    setTimeout(function () {
-        return callback(null, {
-            rua: 'dos bobos',
-            numero: 0
-        })
-    }, 2000)
-}
+const usuarioPromise =obterUsuario()
 
-function resolverUsuario(error, usuario) {
-    console.log('usuario', usuario);
-}
+usuarioPromise.then(function(resultado){
+    console.log("Resultado",resultado)
+}).catch(function(error){
+    console.log("Deu RUIm", error)
+})
 
-obterUsuario(function resolverUsuario(error, usuario) {
-    if (error) {
-        log.error('DEu RUIM EM USUARIO', error);
-        return;
-    }
-
-    obterTelefone(usuario.id, function resolverTelefone(error1, telefone) {
-        if (error1) {
-            log.error('DEu RUIM EM TELEFONE', error);
+/*obterUsuario(function resolveUsuario(error, usuario){
+        if(error){
+            console.error('Deu ruim no Usuario',error)
             return;
         }
-        obterEndereco(usuario.id, function resolverEndereco(error2, endereco) {
-            if (error2) {
-                log.error('DEu RUIM EM ENDERECO', error);
+
+        obterTelefone(usuario.id,function resolveTelefone(error1, telefone){
+            if(error1){
+                console.error('Deu ruim no telefone',error1)
+                return;
+            }    
+
+        obterEndereco(usuario.id, function resolverEndereco(error2,endereco){
+            if(error2){
+                console.error('Deu ruim no endereço',error2)
                 return;
             }
-
             console.log(`
-                nome: ${usuario.nome},
-                endereco: ${endereco.rua}, ${endereco.numero},
-                telefone: (${telefone.ddd})${telefone.telefone}
-
-            `);
+                Nome: ${usuario.nome}
+                Endereco: ${endereco.rua},${endereco.numero}
+                Telefone: ${telefone.ddd}, ${telefone.numero}
+                erro: ${error1} ${error2} ${error}
+            `)
         })
+
     })
-})
-/* const telefone = obterTelefone(usuario.id) */
 
-
-/* console.log('telefone', telefone); */
+})*/
