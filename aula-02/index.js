@@ -15,6 +15,7 @@ function obterUsuario(){
     })
   
 }
+//tetando 
 
 function obterTelefone(idUsuario, callback){
     setTimeout(()=>{
