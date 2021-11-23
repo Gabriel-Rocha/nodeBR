@@ -8,14 +8,10 @@ function obterUsuario(){
             nome: "Aladin",
             dataNascimento: new Date(),
             endereco: "Castelo no meio do deserto da Arábia"
-        })
-        
-        
+        })        
     }, 1000)
     })
-  
-}
-//tetando 
+} 
 
 function obterTelefone(idUsuario, callback){
     setTimeout(()=>{
