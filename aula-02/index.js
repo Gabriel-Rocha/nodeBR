@@ -13,6 +13,7 @@ function obterUsuario(){
     })
 } 
 
+
 function obterTelefone(idUsuario, callback){
     setTimeout(()=>{
         return callback(null,{
@@ -23,6 +24,7 @@ function obterTelefone(idUsuario, callback){
     },2000)
 }
 
+
 function obterEndereco(idUsuario, callback){
     setTimeout(()=>{
         return callback(null,{
@@ -32,6 +34,7 @@ function obterEndereco(idUsuario, callback){
     },2000)
 }
 
+
 const usuarioPromise =obterUsuario()
 
 usuarioPromise.then(function(resultado){
@@ -39,6 +42,7 @@ usuarioPromise.then(function(resultado){
 }).catch(function(error){
     console.log("Deu RUIm", error)
 })
+
 
 /*obterUsuario(function resolveUsuario(error, usuario){
         if(error){
