@@ -42,7 +42,7 @@ usuarioPromise.then(function(resultado){
 }).catch(function(error){
     console.log("Deu RUIm", error)
 })
-
+ 
 
 /*obterUsuario(function resolveUsuario(error, usuario){
         if(error){
